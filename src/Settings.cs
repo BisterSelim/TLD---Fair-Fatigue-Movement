@@ -1,17 +1,13 @@
 ﻿using ModSettings;
 
-namespace ManuelFatigueModu // Dikkat: Burası Main.cs ile birebir aynı oldu
+namespace ManuelFatigueModu
 {
     internal class FatigueModSettings : JsonModSettings
     {
-        [Name("Yürüme Yorgunluk Çarpanı")]
-        [Description("1.0 varsayılandır. 0.1'e çekerseniz yürüme yorgunluğu %90 azalır. 0.0 yaparsanız yürürken hiç yorulmazsınız.")]
+        [Name("Walk fatigue multiplier")]
+        [Description("1.0 vanilla. If you set it to 0.1, walking fatigue will decrease by 90%. If you set it to 0.0, you won't get tired at all while walking.")]
         [Slider(0f, 1f, 101)]
         public float fatigueMultiplier = 1.0f;
-
-        [Name("Koşma Yorgunluğuna Etki")]
-        [Description("Eğer açıksa, koşarken (sprinting) harcanan efor da yukarıdaki çarpandan etkilenir.")]
-        public bool affectSprinting = false;
     }
 
     internal static class Settings
@@ -21,8 +17,8 @@ namespace ManuelFatigueModu // Dikkat: Burası Main.cs ile birebir aynı oldu
         public static void OnLoad()
         {
             options = new FatigueModSettings();
-            // Modun oyun içi ayarlar menüsünde görünmesi için bu satır şarttır
-            options.AddToModSettings("Yorgunluk Ayarları");
+            options.AddToModSettings("Fatigue Settings");
         }
     }
+
 }
